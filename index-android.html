@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>WebView Test</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        text-align: center;
+                        margin-top: 8px;
+                    }
+                    h1 {
+                        margin-bottom: 24px;
+                        font-size: 24px;
+                    }
+                    .horizontal-container {
+                        display: flex;
+                        justify-content: center;
+                        gap: 16px;
+                        margin-bottom: 20px;
+                    }
+                    button {
+                        padding: 10px 20px;
+                        font-size: 14px;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        height: 40px;
+                    }
+                    .alert-button {
+                        background-color: #ffc107;
+                    }
+                    .alert-button:hover {
+                        background-color: #e0a800;
+                    }
+                    .confirm-button {
+                        background-color: #28a745;
+                    }
+                    .confirm-button:hover {
+                        background-color: #218838;
+                    }
+                    .prompt-button {
+                        background-color: #007bff;
+                    }
+                    .prompt-button:hover {
+                        background-color: #0056b3;
+                    }
+                    .jsbridge-button {
+                        background-color: #dc3545;
+                    }
+                    .jsbridge-button:hover {
+                        background-color: #c82333;
+                    }
+                    .centered-container {
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .image-container {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 16px;
+                    }
+                    .image-button {
+                        background-color: orange;
+                    }
+                    .image-button:hover {
+                        background-color: darkorange;
+                    }
+                    .image-preview {
+                        width: 180px;
+                        height: 200px;
+                        object-fit: cover;
+                        border: 2px solid #ddd;
+                        border-radius: 10px;
+                    }
+                </style>
+            </head>
+    <body>
+        <h1>WebView</h1>
+
+        <div style="height: 50px;"></div>
+
+        <div class="horizontal-container">
+            <button class="alert-button" onclick="onAlert()">Alert</button>
+            <button class="confirm-button" onclick="onConfirm()">Confirm</button>
+        </div>
+
+        <div class="horizontal-container">
+            <button class="prompt-button" onclick="onPrompt()">Prompt</button>
+            <input type="text" id="promptInputField" disabled>
+        </div>
+
+        <div style="height: 20px;"></div>
+
+        <div class="centered-container">
+            <button class="jsbridge-button" onclick="onJSBridge()">Test JSBridge</button>
+        </div>
+
+        <div style="height: 40px;"></div>
+
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <div class="image-wrapper" style="display: flex; flex-direction: column; align-items: flex-start;">
+                <h4 style="margin: 0;">Image Loading Test</h4>
+                <div style="height: 20px;"></div>
+                <div class="image-container" style="display: flex; align-items: flex-start; gap: 10px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <button class="image-button" onclick="selectImage()">Select Image</button>
+                    </div>
+                    <img id="selectedImageView" class="image-preview" src="">
+                </div>
+            </div>
+        </div>
+
+         <script>
+            function onAlert() {
+                alert("You clicked on Alert!")
+                webBridge.shareOnAlert();
+            }
+            function onConfirm() {
+                confirm("You clicked on Confirm!")
+                webBridge.shareOnConfirm();
+            }
+            function onPrompt() {
+                let input = prompt("You clicked on Prompt!");
+                if (input !== null) { // User entered something
+                  document.getElementById("promptInputField").value = input;
+                  webBridge.shareOnPrompt('onPrompt', input);
+                } else {
+                  webBridge.shareOnPrompt('onPrompt', "User canceled prompt");
+                }
+            }
+            function onJSBridge() {
+                confirm("You clicked on onJSBridge!")
+                webBridge.shareOnJsBridge();
+            }
+            function selectImage() {
+                console.log('selectImage');
+                webBridge.shareSelectImage();
+            }
+            function reloadImageView(imageViewId, imageId) {
+                
+            }
+        </script>
+    </body>
+</html>
