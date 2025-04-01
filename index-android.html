@@ -33,10 +33,10 @@
 </head>
 <body>
 
-    <h1>WebView Image Picker</h1>
+    <h1>Image Picker</h1>
     <button onclick="selectImage()">Select Image</button>
     <br>
-    <img id="selectedImageView" src="" alt="Selected Image">
+    <img id="displayImage" src="" alt="Display Image">
 
     <script>
         function selectImage() {
@@ -46,7 +46,7 @@
 
         function displayImage(imagePath) {
             console.log("Displaying image:", imagePath);
-            let imageView = document.getElementById("selectedImageView");
+            let imageView = document.getElementById("displayImage");
             imageView.src = imagePath;
             imageView.style.display = "block";
         }
