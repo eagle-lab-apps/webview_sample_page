@@ -8,7 +8,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            padding-top: 50px; /* Ensures space at the top */
+            padding-top: 50px;
             background-color: #f9f9f9;
         }
         button {
@@ -25,15 +25,15 @@
             background-color: #45a049;
         }
         .image-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
         }
         img {
-            width: 200px;
-            height: 200px;
-            display: none;
+            width: 150px;
+            height: 150px;
+            margin: 10px;
             border-radius: 10px;
             border: 2px solid #ddd;
             object-fit: cover;
@@ -42,24 +42,27 @@
 </head>
 <body>
 
-    <h1>Image Picker</h1>
-    <button onclick="selectImage()">Select Image</button>
+    <h1>Multiple Image Picker</h1>
+    <button onclick="selectImages()">Select Images</button>
 
-    <div class="image-container">
-        <img id="displayImage" src="" alt="Display Image">
-    </div>
+    <div class="image-container" id="imageContainer"></div>
 
     <script>
-        function selectImage() {
+        function selectImages() {
             console.log("Requesting image selection...");
-            webBridge.selectImage();
+            window.AndroidInterface.selectImages(); // Calls Android method
         }
 
-        function displayImage(imagePath) {
-            console.log("Displaying image:", imagePath);
-            let imageView = document.getElementById("displayImage");
-            imageView.src = imagePath;
-            imageView.style.display = "block";
+        function displayImages(imagePaths) {
+            console.log("Displaying images:", imagePaths);
+            let container = document.getElementById("imageContainer");
+            container.innerHTML = ""; // Clear previous images
+            
+            imagePaths.forEach(imagePath => {
+                let img = document.createElement("img");
+                img.src = imagePath;
+                container.appendChild(img);
+            });
         }
     </script>
 
