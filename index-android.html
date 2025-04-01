@@ -6,8 +6,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
             text-align: center;
-            margin-top: 50px;
+            background-color: #f9f9f9;
         }
         button {
             padding: 10px 20px;
@@ -17,17 +23,18 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 20px;
         }
         button:hover {
             background-color: #45a049;
         }
         img {
-            margin-top: 20px;
             width: 200px;
             height: 200px;
             display: none;
             border-radius: 10px;
             border: 2px solid #ddd;
+            object-fit: cover; /* Ensures the image is well-fitted */
         }
     </style>
 </head>
@@ -35,7 +42,6 @@
 
     <h1>Image Picker</h1>
     <button onclick="selectImage()">Select Image</button>
-    <br>
     <img id="displayImage" src="" alt="Display Image">
 
     <script>
