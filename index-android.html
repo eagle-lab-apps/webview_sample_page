@@ -6,13 +6,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
             text-align: center;
+            margin: 0;
+            padding-top: 50px; /* Ensures space at the top */
             background-color: #f9f9f9;
         }
         button {
@@ -23,10 +19,16 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin-top: 20px;
         }
         button:hover {
             background-color: #45a049;
+        }
+        .image-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         img {
             width: 200px;
@@ -34,7 +36,7 @@
             display: none;
             border-radius: 10px;
             border: 2px solid #ddd;
-            object-fit: cover; /* Ensures the image is well-fitted */
+            object-fit: cover;
         }
     </style>
 </head>
@@ -42,7 +44,10 @@
 
     <h1>Image Picker</h1>
     <button onclick="selectImage()">Select Image</button>
-    <img id="displayImage" src="" alt="Display Image">
+
+    <div class="image-container">
+        <img id="displayImage" src="" alt="Display Image">
+    </div>
 
     <script>
         function selectImage() {
