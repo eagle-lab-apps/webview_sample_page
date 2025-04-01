@@ -50,13 +50,13 @@
     <script>
         function selectImages() {
             console.log("Requesting image selection...");
-            window.AndroidInterface.selectImages(); // Calls Android method
+            webBridge.selectImages();
         }
 
         function displayImages(imagePaths) {
             console.log("Displaying images:", imagePaths);
             let container = document.getElementById("imageContainer");
-            container.innerHTML = ""; // Clear previous images
+            container.innerHTML = "";
             
             imagePaths.forEach(imagePath => {
                 let img = document.createElement("img");
