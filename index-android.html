@@ -12,10 +12,10 @@
 
         .toolbar {
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
             background-color: #ffffff;
-            padding: 10px 16px;
+            padding: 12px 16px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
@@ -23,34 +23,13 @@
             z-index: 1000;
         }
 
-        .toolbar-left,
-        .toolbar-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .toolbar-left img {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-        }
-
-        .toolbar-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 18px;
+        .toolbar-title {
+            font-size: 20px;
             font-weight: bold;
         }
 
-        .toolbar-right span {
-            font-size: 18px;
-            margin-left: 16px;
-            cursor: pointer;
-        }
-
         h1 {
-            margin-top: 100px; /* Space for toolbar */
+            margin-top: 100px;
             text-align: center;
             padding: 0 20px;
         }
@@ -96,14 +75,7 @@
 <body>
 
     <div class="toolbar">
-        <div class="toolbar-left">
-            <img src="https://via.placeholder.com/30" alt="logo">
-        </div>
-        <div class="toolbar-center">BeeCues</div>
-        <div class="toolbar-right">
-            <span>🔍</span>
-            <span>☰</span>
-        </div>
+        <div class="toolbar-title">BeeCues</div>
     </div>
 
     <h1>Multiple Image Picker</h1>
