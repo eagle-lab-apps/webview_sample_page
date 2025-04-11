@@ -33,30 +33,32 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .toolbar-left span,
-        .toolbar-center,
-        .toolbar-right span {
-            font-size: 18px;
-            font-weight: bold;
         }
 
         .toolbar-center {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: bold;
         }
 
         .toolbar-right span {
+            font-size: 18px;
             margin-left: 16px;
             cursor: pointer;
         }
 
         h1 {
-            margin-top: 80px; /* To make space below fixed toolbar */
+            margin-top: 100px; /* Space for toolbar */
             text-align: center;
+            padding: 0 20px;
+        }
+
+        .button-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         button {
@@ -67,7 +69,6 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
         }
 
         button:hover {
@@ -79,6 +80,7 @@
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 20px;
+            padding: 0 10px;
         }
 
         img {
@@ -96,7 +98,6 @@
     <div class="toolbar">
         <div class="toolbar-left">
             <img src="https://via.placeholder.com/30" alt="logo">
-            <span>Home</span>
         </div>
         <div class="toolbar-center">BeeCues</div>
         <div class="toolbar-right">
@@ -106,7 +107,10 @@
     </div>
 
     <h1>Multiple Image Picker</h1>
-    <button onclick="selectImages()">Select Images</button>
+
+    <div class="button-wrapper">
+        <button onclick="selectImages()">Select Images</button>
+    </div>
 
     <div class="image-container" id="imageContainer"></div>
 
