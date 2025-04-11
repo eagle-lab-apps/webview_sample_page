@@ -19,8 +19,14 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
-            justify-content: center;
+            padding: 0 16px;
             z-index: 1000;
+        }
+
+        .toolbar img {
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
         }
 
         .toolbar-title {
@@ -65,7 +71,7 @@
             padding: 0 10px;
         }
 
-        img {
+        img.picked-image {
             width: 150px;
             height: 150px;
             margin: 10px;
@@ -78,6 +84,7 @@
 <body>
 
     <div class="toolbar">
+        <img src="https://raw.githubusercontent.com/eagle-lab-apps/webview_sample_page/main/Bee.svg" alt="Logo">
         <div class="toolbar-title">BeeCues</div>
     </div>
 
@@ -103,6 +110,7 @@
             imagePaths.forEach(imagePath => {
                 let img = document.createElement("img");
                 img.src = imagePath;
+                img.classList.add("picked-image");
                 container.appendChild(img);
             });
         }
